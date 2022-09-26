@@ -24,7 +24,7 @@ jobs:
     environment: ${{ github.event.inputs.name }}
     env:
      key1: ${{secrets.whoisme}} 
-     key2: $key1
+     key2: ${{key1}}
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
