@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create bucket in S3
-      uses: alialrubaye/aws-s3-bucket-creatation@v1.0.1
+      uses: alialrubaye/aws-s3-create-bucket@v1.0.1
       with:
         bucket-name: 'ali-test55'
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
