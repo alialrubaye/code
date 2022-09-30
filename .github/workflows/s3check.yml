@@ -1,0 +1,25 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+   
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: tuler/s3-check-action@master
+      id: check
+      env:       
+        AWS_REGION: 'us-east-1'
+        AWS_S3_BUCKET: "s3://ali-test55 "
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - run: echo "Do your thing"
+      if: steps.check.outputs.exists == 'false'
+    - run: echo "Write a file to S3 bucket"
+      if: steps.check.outputs.exists == 'false'
